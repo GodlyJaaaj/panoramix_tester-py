@@ -34,7 +34,8 @@ class TestPanoramix(unittest.TestCase):
             stderr=subprocess.PIPE)
 
         try:
-            _, stderr = p.communicate(timeout=self.max_timeout)
+            stdout, stderr = p.communicate(timeout=self.max_timeout)
+            print(stdout.decode("utf-8"))
             success = True
             message = (f"{Fore.GREEN}Test {test_num + 1} passed: panoramix terminated "
                       f"successfully with parameters ({nb_villagers}, "
